@@ -45,7 +45,7 @@ public class SimpleRowFilter implements RowFilter, FilterMatcherRegistrySupport 
         if (filtered) {
             Collection<Object> collection = new ArrayList<Object>();
             Map<Filter, FilterMatcher> filterMatchers = getFilterMatchers(items, filterSet);
-            Predicate<?> filterPredicate = getPredicate(filterMatchers, filterSet);
+            Predicate<Object> filterPredicate = getPredicate(filterMatchers, filterSet);
             CollectionUtils.select(items, filterPredicate, collection);
 
             return collection;
@@ -76,7 +76,7 @@ public class SimpleRowFilter implements RowFilter, FilterMatcherRegistrySupport 
         return filterMatchers;
     }
 
-    protected Predicate getPredicate(Map<Filter, FilterMatcher> filterMatchers, FilterSet filterSet) {
+    protected Predicate<Object> getPredicate(Map<Filter, FilterMatcher> filterMatchers, FilterSet filterSet) {
         return new FilterPredicate(filterMatchers, filterSet);
     }
 

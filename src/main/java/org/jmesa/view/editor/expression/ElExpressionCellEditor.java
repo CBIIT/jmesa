@@ -21,6 +21,8 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.el.ELResolver;
+
 import jakarta.servlet.jsp.el.ELException;
 import jakarta.servlet.jsp.el.FunctionMapper;
 import jakarta.servlet.jsp.el.VariableResolver;
@@ -70,18 +72,19 @@ public class ElExpressionCellEditor extends AbstractCellEditor {
             // ExpressionString is a mixture of template text and EL
             // expressions; ex. ${lastName}, ${firstName}
             if (template instanceof ExpressionString) {
-                result = ((ExpressionString) template).evaluate(getVariableResolver(item), getFunctionMapper(), pLogger);
+                // TOTO result = ((ExpressionString) template).evaluate((getVariableResolver(item), getFunctionMapper(), pLogger);
 
             // Expression is a single EL expression with no template text;
             // ex. ${lastName + ', ' + firstName}
             } else if (template instanceof org.apache.commons.el.Expression) {
-                result = ((org.apache.commons.el.Expression) template).evaluate(getVariableResolver(item), getFunctionMapper(), pLogger);
+                // TODO result = ((org.apache.commons.el.Expression) template).evaluate((getVariableResolver(item), getFunctionMapper(), pLogger);
 
             // If the expression parsed to a String, it is just template text 
             } else if (template instanceof String) {
                 result = template;
             }
-        } catch (ELException e) {
+        } 
+        catch (Exception e) {
             logger.warn("Could not process el expression editor with property " + property, e);
         }
 

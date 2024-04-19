@@ -16,20 +16,24 @@
 package org.jmesa.test;
 
 import org.jmesa.limit.LimitUtils;
-import org.springframework.mock.web.MockHttpServletRequest;
+// import org.springframework.mock.web.MockHttpServletRequest;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * @since 2.0
  * @author Jeff Johnston
  */
 public class SpringParametersAdapter implements Parameters {
-    private final MockHttpServletRequest request;
+    private final HttpServletRequest request;
 
-    public SpringParametersAdapter(MockHttpServletRequest request) {
+    public SpringParametersAdapter(HttpServletRequest request) {
         this.request = request;
     }
 
     public void addParameter(String parameter, Object value) {
-        request.addParameter(parameter, LimitUtils.getValue(value));
+        // request.addParameter(parameter, LimitUtils.getValue(value));
+    	String[] values = {LimitUtils.getValue(value)};
+        request.getParameterMap().put(parameter, values);
     }
 }
