@@ -21,9 +21,9 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.jsp.el.ELException;
-import javax.servlet.jsp.el.FunctionMapper;
-import javax.servlet.jsp.el.VariableResolver;
+import jakarta.servlet.jsp.el.ELException;
+import jakarta.servlet.jsp.el.FunctionMapper;
+import jakarta.servlet.jsp.el.VariableResolver;
 
 import org.apache.commons.el.ExpressionString;
 import org.apache.commons.el.parser.ELParser;

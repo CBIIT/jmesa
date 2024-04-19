@@ -15,7 +15,7 @@
  */
 package org.jmesa.worksheet.editor;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 import org.jmesa.limit.Limit;
 import org.jmesa.view.html.HtmlBuilder;
 import org.jmesa.worksheet.WorksheetColumn;
@@ -46,7 +46,7 @@ public abstract class AutoCompleteWorksheetEditor extends AbstractWorksheetEdito
 
         WorksheetColumn worksheetColumn = getWorksheetColumn(item, property);
         if (worksheetColumn != null) {
-            value = escapeHtml(worksheetColumn.getChangedValue());
+            value = escapeHtml4(worksheetColumn.getChangedValue());
         } else {
             value = getValueForWorksheet(item, property, rowcount);
         }

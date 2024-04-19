@@ -20,8 +20,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.collections.Predicate;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
+import org.apache.commons.collections4.CollectionUtils;
 import org.jmesa.limit.Filter;
 import org.jmesa.limit.FilterSet;
 import org.jmesa.limit.Limit;
@@ -43,9 +43,9 @@ public class SimpleRowFilter implements RowFilter, FilterMatcherRegistrySupport 
         boolean filtered = filterSet.isFiltered();
 
         if (filtered) {
-            Collection<?> collection = new ArrayList<Object>();
+            Collection<Object> collection = new ArrayList<Object>();
             Map<Filter, FilterMatcher> filterMatchers = getFilterMatchers(items, filterSet);
-            Predicate filterPredicate = getPredicate(filterMatchers, filterSet);
+            Predicate<?> filterPredicate = getPredicate(filterMatchers, filterSet);
             CollectionUtils.select(items, filterPredicate, collection);
 
             return collection;

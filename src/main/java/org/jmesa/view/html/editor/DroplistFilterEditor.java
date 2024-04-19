@@ -15,8 +15,8 @@
  */
 package org.jmesa.view.html.editor;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
-import static org.apache.commons.lang.StringEscapeUtils.escapeJavaScript;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
+import static org.apache.commons.text.StringEscapeUtils.escapeEcmaScript;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jmesa.limit.Filter;
 import org.jmesa.limit.Limit;
 import org.jmesa.util.ItemUtils;
@@ -72,8 +72,8 @@ public class DroplistFilterEditor extends AbstractFilterEditor {
                 filterLabel = label;
             }
 
-            value = escapeJavaScript(escapeHtml(value));
-            label = escapeJavaScript(escapeHtml(label));
+            value = escapeEcmaScript(escapeHtml4(value));
+            label = escapeEcmaScript(escapeHtml4(label));
 
             array.append("'").append(value).append("':'").append(label).append("'");
             if (it.hasNext()) {
@@ -86,7 +86,7 @@ public class DroplistFilterEditor extends AbstractFilterEditor {
         html.div().styleClass("dynFilter");
         html.onclick("jQuery.jmesa.createDroplistDynFilter(this,'" + limit.getId() + "','" + column.getProperty() + "'," + array + ")");
         html.close();
-        html.append(escapeHtml(filterLabel));
+        html.append(escapeHtml4(filterLabel));
         html.divEnd();
 
         return html.toString();

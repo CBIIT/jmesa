@@ -17,7 +17,7 @@ package org.jmesa.core.filter;
 
 import java.util.Map;
 
-import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections4.Predicate;
 import org.jmesa.limit.Filter;
 import org.jmesa.limit.FilterSet;
 import org.jmesa.util.ItemUtils;

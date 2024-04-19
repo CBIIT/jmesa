@@ -16,7 +16,7 @@
 package org.jmesa.model;
 
 import java.util.Collection;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.jmesa.facade.TableFacade;
 import org.jmesa.limit.ExportType;
 import org.jmesa.limit.Limit;

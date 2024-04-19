@@ -15,7 +15,7 @@
  */
 package org.jmesa.limit;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jmesa.limit.state.SessionState;
 import org.jmesa.limit.state.State;
 import org.jmesa.util.SupportUtils;

@@ -15,7 +15,7 @@
  */
 package org.jmesa.worksheet.editor;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -102,7 +102,7 @@ public class DroplistWorksheetEditor extends AbstractWorksheetEditor {
         html.onmouseover("$.jmesa.setTitle(this, event)");
         html.onclick(getUniquePropertyJavaScript(item) + "$.jmesa.createWsDroplistColumn(this, '" + limit.getId() + "'," + UNIQUE_PROPERTY + ",'" + getColumn().getProperty() + "', " + array + ")");
         html.close();
-        html.append(escapeHtml(value.toString()));
+        html.append(escapeHtml4(value.toString()));
         html.divEnd();
         
         return html.toString();

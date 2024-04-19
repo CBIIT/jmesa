@@ -30,9 +30,9 @@ import java.io.StringWriter;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.JspFragment;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.JspFragment;
+import jakarta.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.jmesa.util.ItemUtils;
 import org.jmesa.view.editor.CellEditor;

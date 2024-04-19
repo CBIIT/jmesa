@@ -15,9 +15,9 @@
  */
 package org.jmesa.view.html;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeJavaScript;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
+import static org.apache.commons.text.StringEscapeUtils.escapeEcmaScript;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.jmesa.core.CoreContext;
 import org.jmesa.limit.Filter;
 import org.jmesa.limit.Limit;
@@ -326,7 +326,7 @@ public class HtmlSnippets extends AbstractContextSupport {
         }
 
         for (Filter filter : limit.getFilterSet().getFilters()) {
-            String value = escapeJavaScript(filter.getValue());
+            String value = escapeEcmaScript(filter.getValue());
             html.tab().append("jQuery.jmesa.addFilterToLimit('" + limit.getId() + "','" + filter.getProperty() + "','" + value + "')").semicolon().newline();
         }
 
@@ -342,7 +342,7 @@ public class HtmlSnippets extends AbstractContextSupport {
 
         // I'm allowing getWebContext() to be null for backwards compatibility
         if (getWebContext() != null) {
-            html.tab().append("jQuery.jmesa.setContextPath('" + limit.getId() + "','" + StringEscapeUtils.escapeJavaScript(getWebContext().getContextPath()) + "')").semicolon().newline();
+            html.tab().append("jQuery.jmesa.setContextPath('" + limit.getId() + "','" + escapeEcmaScript(getWebContext().getContextPath()) + "')").semicolon().newline();
         }
 
         html.append(getWorksheetValidation());

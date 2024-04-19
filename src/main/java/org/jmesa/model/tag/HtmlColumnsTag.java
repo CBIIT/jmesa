@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.jsp.tagext.SimpleTagSupport;
+import jakarta.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.jmesa.core.CoreContext;
 import org.jmesa.util.ItemUtils;

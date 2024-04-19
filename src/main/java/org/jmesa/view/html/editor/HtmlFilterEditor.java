@@ -15,7 +15,7 @@
  */
 package org.jmesa.view.html.editor;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 import org.jmesa.limit.Filter;
 import org.jmesa.limit.Limit;
 import org.jmesa.view.editor.AbstractFilterEditor;
@@ -50,7 +50,7 @@ public class HtmlFilterEditor extends AbstractFilterEditor {
         html.div().styleClass("dynFilter");
         html.onclick("jQuery.jmesa.createDynFilter(this, '" + limit.getId() + "','" + column.getProperty() + "')");
         html.close();
-        html.append(escapeHtml(filterValue));
+        html.append(escapeHtml4(filterValue));
         html.divEnd();
 
         return html.toString();

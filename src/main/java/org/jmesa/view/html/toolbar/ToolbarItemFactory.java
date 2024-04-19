@@ -17,7 +17,7 @@ package org.jmesa.view.html.toolbar;
 
 import static org.jmesa.view.html.HtmlConstants.*;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jmesa.core.CoreContext;
 import org.jmesa.view.html.HtmlConstants;
 import org.jmesa.view.html.HtmlUtils;

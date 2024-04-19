@@ -16,7 +16,7 @@
 package org.jmesa.view.html.editor;
 
 import org.jmesa.view.editor.*;
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 import org.jmesa.util.ItemUtils;
 
 /**
@@ -29,7 +29,7 @@ public class HtmlCellEditor extends AbstractCellEditor {
     public Object getValue(Object item, String property, int rowcount) {
         Object itemValue = ItemUtils.getItemValue(item, property);
         if (itemValue != null) {
-            itemValue = escapeHtml(itemValue.toString());
+            itemValue = escapeHtml4(itemValue.toString());
         }
         return itemValue;
     }

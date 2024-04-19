@@ -16,7 +16,7 @@
 package org.jmesa.facade;
 
 import javax.portlet.PortletRequest;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jmesa.core.message.Messages;
 import org.jmesa.core.message.MessagesFactory;
@@ -30,7 +30,7 @@ import org.jmesa.web.SpringWebContext;
 import org.jmesa.web.WebContext;
 import org.springframework.context.i18n.LocaleContextHolder;
 import com.opensymphony.xwork2.ActionContext;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * A factory to create TableFacade implementations.

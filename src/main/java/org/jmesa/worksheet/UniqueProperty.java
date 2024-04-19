@@ -16,7 +16,7 @@
 package org.jmesa.worksheet;
 
 import java.io.Serializable;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents the unique property for the row.

@@ -17,7 +17,7 @@ package org.jmesa.core.filter;
 
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Will do a string match based on wildcards.

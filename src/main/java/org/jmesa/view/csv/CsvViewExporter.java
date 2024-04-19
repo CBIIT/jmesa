@@ -15,8 +15,8 @@
  */
 package org.jmesa.view.csv;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.jmesa.core.CoreContext;
 import org.jmesa.view.AbstractViewExporter;

@@ -17,8 +17,8 @@ package org.jmesa.limit;
 
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -118,7 +118,7 @@ public class LimitActionFactory {
                     String position = StringUtils.substringBetween(parameter, prefixId + Action.SORT.toParam(), "_");
                     String property = StringUtils.substringAfter(parameter, prefixId + Action.SORT.toParam() + position + "_");
                     Order order = Order.valueOfParam(value);
-                    Sort sort = new Sort(new Integer(position), property, order);
+                    Sort sort = new Sort(Integer.valueOf(position), property, order);
                     sortSet.addSort(sort);
                 }
             }

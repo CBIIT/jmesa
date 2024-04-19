@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.jsp.tagext.SimpleTagSupport;
+import jakarta.servlet.jsp.tagext.SimpleTagSupport;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jmesa.core.filter.FilterMatcherMap;
 import org.jmesa.core.filter.RowFilter;
 import org.jmesa.core.message.Messages;
