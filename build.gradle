@@ -1,0 +1,106 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+allprojects {
+	apply plugin:		'java'
+	apply plugin: 		'eclipse'
+	group				=		'org.jmesa'
+	version				= 		project.version
+
+	repositories {
+		mavenCentral()
+		
+		flatDir {
+			dirs('../libs')
+		}
+	}
+	
+	dependencies {
+		implementation 'org.slf4j:slf4j-api:2.0.13'
+		implementation 'org.slf4j:jcl-over-slf4j:2.0.13'
+		implementation 'commons-beanutils:commons-beanutils:1.9.4'
+		implementation 'org.apache.commons:commons-collections4:4.4'
+		implementation 'org.apache.commons:commons-lang3:3.14.0'
+		implementation 'commons-el:commons-el:1.0'
+		compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.1'
+		compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+		compileOnly 'javax.portlet:portlet-api:3.0.1'
+		implementation 'org.springframework:spring-core:6.0.19'
+		implementation 'org.springframework:spring-context:6.0.19'
+		implementation 'org.springframework:spring-web:6.0.19'
+		implementation 'org.springframework:spring-webmvc-portlet:4.3.30.RELEASE'
+		implementation 'org.apache.poi:poi:5.2.5'
+		implementation 'org.xhtmlrenderer:core-renderer:R8'
+		implementation 'com.itextpdf:itextpdf:5.5.13.3'
+		implementation 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
+		implementation 'joda-time:joda-time:2.12.7'
+		implementation 'org.apache.groovy:groovy:4.0.21'
+		implementation 'com.opensymphony:xwork:2.1.3'		
+
+		implementation fileTree(dir: "$rootDir/libs", include: ['*.jar'])
+		implementation fileTree(dir: "$rootDir/build/libs", include: ['*.jar'])
+	}
+}
+	
+sourceCompatibility = 17
+targetCompatibility = 17
+
+compileJava {
+	options.compilerArgs << '-Aopenjpa.source=17'
+	options.compilerArgs << '-Aopenjpa.metamodel=true'
+}
+
+wrapper {
+    gradleVersion = '7.6.4'
+}
+
+sourceSets {
+    main {
+		java {
+			srcDirs = ['src']
+		}
+	    resources {
+			srcDir 'build/tmp'
+			include 'jmesa.tld'
+	    }         
+    }
+}
+
+task uberJar(type: Jar) {
+    archiveBaseName	=	'jmesa'   
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
+task custResources() {
+	doLast {
+		project.file('build/tmp').mkdirs()
+		copy {	
+			from 'src/main/resources/META-INF'
+			include 'jmesa.tld'
+			into 'build/tmp'
+		}
+	}
+}
+
+clean.doLast {
+	file('caches/build-cache-1').deleteDir()
+}
+
+task showCache
+showCache.doLast {
+	configurations.compile.each { println it }
+}
+
+javadoc {
+	source sourceSets.main.allSource
+	failOnError = false
+}
+
+jar {
+	archiveBaseName = 'jmesa'
+}
+
+compileJava.dependsOn custResources
