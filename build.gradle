@@ -56,18 +56,6 @@ wrapper {
     gradleVersion = '7.6.4'
 }
 
-sourceSets {
-    main {
-		java {
-			srcDirs = ['src']
-		}
-	    resources {
-			srcDir 'build/tmp'
-			include 'jmesa.tld'
-	    }         
-    }
-}
-
 task uberJar(type: Jar) {
     archiveBaseName	=	'jmesa'   
     from sourceSets.main.output
@@ -77,16 +65,6 @@ task uberJar(type: Jar) {
     }
 }
 
-task custResources() {
-	doLast {
-		project.file('build/tmp').mkdirs()
-		copy {	
-			from 'src/main/resources/META-INF'
-			include 'jmesa.tld'
-			into 'build/tmp'
-		}
-	}
-}
 
 clean.doLast {
 	file('caches/build-cache-1').deleteDir()
@@ -103,7 +81,6 @@ javadoc {
 }
 
 jar {
+	// duplicatesStrategy = DuplicatesStrategy.WARN  
 	archiveBaseName = 'jmesa'
 }
-
-compileJava.dependsOn custResources
